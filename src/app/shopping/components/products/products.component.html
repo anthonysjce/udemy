@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-3">
+    <!-- we can add i have created from css <div class="sticky"> -->
+    <div class="sticky-top">
+        <product-filter  [category]="category"></product-filter>
+    </div>
+     
+    <!-- <div class="list-group">
+      <a  [routerLink]="['/']" class="list-group-item list-group-item-action"
+      [class.active]="!category">
+        All Categories
+      </a>
+      <a [routerLink]="['/']" [queryParams]="{category:c.$key}"
+        *ngFor="let c of categories$ | async" 
+          class="list-group-item list-group-item-action" [class.active]="category === c.$key">
+        {{c.name}}
+      </a>
+    </div> -->
+  </div>
+  <div class="col">
+    <div class="row" *ngIf="cart$ | async as cart">
+      <!-- <ng-container *ngFor="let product of product$ | async; let i= index"> -->
+          <ng-container *ngFor="let product of filterProducts; let i= index">
+          <div class="col">
+              <product-card [product]="product"
+              [shopping-cart]="cart"></product-card>
+              <!-- <div  class="card" style="width: 18rem;">
+                  <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{product.title}}</h5>
+                    <p class="card-text">{{product.price | currency:'USD':true}}</p>
+                    <a href="#" class="btn btn-primary">Add to cart</a>
+                  </div>
+              </div> -->
+          </div>
+          <!-- Line break ater 2 products. for 3 products % by 3 -->
+          <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+      </ng-container>  
+    </div>
+  </div>
+</div>
+
+
+<!-- <div *ngFor="let product of product$ | async" class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{product.title}}</h5>
+    <p class="card-text">{{product.price | currency:'USD':true}}</p>
+    <a href="#" class="btn btn-primary">Add to cart</a>
+  </div>
+</div> -->

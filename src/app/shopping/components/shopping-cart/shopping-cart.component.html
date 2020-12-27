@@ -1,0 +1,60 @@
+<h1>Shopping Cart</h1>
+<!-- <ng-container *ngIf="cart$ | async as cart"> -->
+  <div class="card" style="width:80%" *ngIf="cart$ | async as cart">
+    <div class="card-body">
+      <p>
+        you have {{cart.totalItemsCount}} items in your shopping 
+        <button *ngIf="cart.totalItemsCount > 0" class="btn btn-gray float-right" (click)="clearCart()">
+            Clear Shopping Cart
+          </button>
+      </p>
+    </div>     
+      <table class="table" *ngIf="cart.totalItemsCount > 0">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Product</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-right">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart.items">
+            <td>
+              <!-- <img [src]="item.imageUrl" class="thumbnail"> this is gttng pixalated-->
+              <div [style.backgroundImage]="'url('+item.imageUrl+')'" class="thumbnail"></div>
+            </td>
+            <td>{{item.title}}</td>
+            <!-- <td>{{item.quantity}}</td> -->
+            <td>
+                <product-quantity [product]="item" [shopping-cart]="cart">        
+                  </product-quantity>
+            </td>            
+            <td class="text-right">{{item.totalPrice | currency:'USD':true}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th class="text-right">{{cart.totalPrice | currency:'USD':true}}</th>
+          </tr>
+          <tr>
+            <th colspan="4">
+              <a *ngIf="cart.totalItemsCount > 0" class="btn btn-primary" [routerLink]="['/check-out']">
+                Check out
+              </a>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <!-- <p *ngIf="cart.totalItemsCount > 0">
+        <a class="btn btn-primary" [routerLink]="['/check-out']">
+          Check out
+        </a>      
+    </p> -->  
+  </div>
+    
+<!-- </ng-container> -->
+

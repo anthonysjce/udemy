@@ -1,0 +1,19 @@
+<h1>Order Summary</h1>
+<table *ngIf="order$ | async as orders" class="table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Date</th>
+      <th></th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">      
+      <td>{{order.shipping.name}}</td>
+      <td>{{order.datePlaced | date:'MMM dd, yyyy'}}</td>
+      <td>
+        <a href="">View</a>
+      </td>
+    </tr>   
+  </tbody>
+</table>

@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+body{padding-top: 80px};
+
+$application-theme:#C2CC2E;
+$primary-color-hover: #b1c522;
+.navbar-light .navbar-brand {
+    color: $application-theme;
+}
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    color: $primary-color-hover;
+}
+.navbar { 
+    border-bottom: 3px solid #e7e7e7;
+}
+.list-group-item.active {   
+    background-color: $application-theme;
+    border-color: $application-theme;
+}
+.btn-primary {    
+    background-color: $application-theme;
+    border-color: $application-theme;
+}
+.btn-primary:hover {
+    background-color: $primary-color-hover;
+    border-color: $primary-color-hover;
+}
+.btn.disabled, .btn:disabled {
+    background-color: $application-theme;
+    border-color: $application-theme;
+}
+.btn-secondary {   
+    background-color: $application-theme;
+    border-color: $application-theme;
+}
+.btn-secondary:hover {
+    background-color: $primary-color-hover;
+    border-color: $primary-color-hover;
+}
